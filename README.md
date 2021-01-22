@@ -73,11 +73,11 @@ The tech stack that was chosen for this web application is the MERN stack. This 
 
 **MongoDB -** MongoDB is a highly scalable, document orientated, no SQL database that is utilized by the application to store data, with data stored in the JSON format.
  
-**Express -**Express.js is a server side, Javascript framework that is used within the backend of the application on top of NodeJS. Express was designed to help build fast, simple and secure web applications.
+**Express -** Express.js is a server side, Javascript framework that is used within the backend of the application on top of NodeJS. Express was designed to help build fast, simple and secure web applications.
  
-**React - **React.js is a javascript library used to build UI components on the front end. These components are what make up the whole UI for a web based application. React allows a webpage to 'react' to changes to a page without having to reload it.
+**React -** React.js is a javascript library used to build UI components on the front end. These components are what make up the whole UI for a web based application. React allows a webpage to 'react' to changes to a page without having to reload it.
  
-**Node -**Node.js is a Javascript runtime environment that allows JS applications to run on the server side, rather than within a browser. Node JS utilizes the NPM (node package manager), which gives access to a large number of packages.
+**Node -** Node.js is a Javascript runtime environment that allows JS applications to run on the server side, rather than within a browser. Node JS utilizes the NPM (node package manager), which gives access to a large number of packages.
  
 ## Additional tech used
  
@@ -91,7 +91,7 @@ The tech stack that was chosen for this web application is the MERN stack. This 
  
 **Mongoose -** Mongoose provides a straight-forward, schema-based solution to generate and manipulate MongoDB databases in node/express. 
  
-**Putting it Together -**This web application uses the above technologies to create a 3 tiered architecture (frontend, backend, database). The front end is created with React by using components that connect to the back end to provide data, and renders it in HTML in the browser. Express and Node are used on the backend and are used for routing and handling HTTP requests and determining what functions to perform with different requests. These functions access and modify the MongoDB database to provide the data requested.
+**Putting it Together -** This web application uses the above technologies to create a 3 tiered architecture (frontend, backend, database). The front end is created with React by using components that connect to the back end to provide data, and renders it in HTML in the browser. Express and Node are used on the backend and are used for routing and handling HTTP requests and determining what functions to perform with different requests. These functions access and modify the MongoDB database to provide the data requested.
  
 
 # User Stories
@@ -103,7 +103,7 @@ This user story was deemed unnecessary as there is an ability to delete a job as
 
 One user story was added to the Users stories after consulting with the client:
 
-**Contact page -**  As a client, I want to contact the builder, so I can begin a project.
+**Contact page -** As a client, I want to contact the builder, so I can begin a project.
 
 This was initially not on the page and a requirement for the client to make an account in order to contact was in place. This has now been revised and an email to contact link was added to the user stories and corresponding wireframes.
 
@@ -164,6 +164,7 @@ For the app the major processes that require data sharing between the client, se
 
 ### Login and Client Creation Process
 ![login Flow diagram](./images/diagrams/login-data-flow.png)
+
 In the Login process Clients and the Builder send account details to the server, which checks them against those same details in the database, and returns a confirmation allowing login or a rejection and prevention of login. 
 
 In the Client Creation process a prospective client will provide new account details to the server, which creates a new instance of User on the database as long as the name and email address are not already in the database.
@@ -171,10 +172,13 @@ In the Client Creation process a prospective client will provide new account det
 ### Create Job Process
 ![create job Flow diagram](./images/diagrams/client-create-job.png)
 
-For the Job Crud processes, creating jobs requires the client to send through job information such as design documents and the prospective build address, which the server uses along with the clients User instance to create a new Job instance on the database, then adding the Job’s id as a foreign key in the User instances Job’s array. When Images are included in the Job details these images are sent to the AWS Bucket for cloud hosting, which supplies back a link that can be stored in the Job documents array in the database by the server.
+For the Job Crud processes, creating jobs requires the client to send through job information such as design documents and the prospective build address, which the server uses along with the clients User instance to create a new Job instance on the database, then adding the Job’s id as a foreign key in the User instances Job’s array. 
+
+When Images are included in the Job details these images are sent to the AWS Bucket for cloud hosting, which supplies back a link that can be stored in the Job documents array in the database by the server.
 
 ### View Jobs Process
 ![view job Flow diagram](./images/diagrams/client-view-job.png)
+
 Viewing jobs requires the server requesting all the relevant jobs for that user from the database (all jobs for builder, only client’s jobs for client) and supplying them to the front end.
 
 
@@ -185,10 +189,12 @@ Updating jobs can be done by either the client or the builder. When clients make
 
 ### Client Update Job Process
 ![client Flow diagram](./images/diagrams/client-data-flow.png)
+
 When the client makes a comment on the Job stage this comment is sent to the server which appends it to the Job stage’s comments array in the database. When uploading additional documents the image is sent to the AWS Bucket as in Job creation, a link to the image is returned to the server and uploaded to the database.
 
 ### Builder Update Job Process
 ![builder Flow diagram](./images/diagrams/builder-data-flow.png)
+
 When the builder updates the Job or the Job Stages the data is sent to the server from the client, the server then updates the correct job with the new Stage Amount/Stage Status or Stage Comment. When uploaded images to Job stages, in a similar fashion to when clients upload design documents, the front-end sends the image to the AWS bucket and the returned link is sent to the server to be added to the corresponding stage in the Job instance on the database.
 
 ---
@@ -198,11 +204,15 @@ When the builder updates the Job or the Job Stages the data is sent to the serve
 Clarification and explanation of diagram
 
 ![Application Architecture](./images/diagrams/application_diagram.png)
-As can be seen from the diagram above, the application is separated into four different layers, consisting of the client layer, the server layer, the database layer and the external platform layer. On the client layer the user makes changes to the application state, which communicates with the server layer through HTTP requests. The server layer communicates with the database depending on the request and retrieves the corresponding data to fulfill the request. Through the user model, job model and image hyperlinks communicate with the external platform layer to handle payment and provide hosted images to the browser.
+
+As can be seen from the diagram above, the application is separated into four different layers, consisting of the client layer, the server layer, the database layer and the external platform layer. On the client layer the user makes changes to the application state, which communicates with the server layer through HTTP requests. 
+
+The server layer communicates with the database depending on the request and retrieves the corresponding data to fulfill the request. Through the user model, job model and image hyperlinks communicate with the external platform layer to handle payment and provide hosted images to the browser.
 
 ---
 
 # Wireframes
+
 When developing the wire frames for the client, we used the agile methodology to ensure we were prioritizing client needs by discovering their requirements and developing solutions based upon this.
 
 This process involves planning, designing, developing, testing,  followed by releasing to the client in order to acquire feedback and repeating the process if necessary. This was performed within this project by planning with user stories and designing the structure of the application through application architecture and dataflow diagram. Wireframes were developed based upon these documents and tested against the user stories outlined previously.
@@ -222,7 +232,7 @@ On completion of testing, wireframes were released to the client and feedback wa
 ### Tablet Diagrams
 #### Landing / Jobs / Gallery
 ![Tablet wireframes](./images/wireframes/tabl_1.png)
-#### About / Contanct
+#### About / Contact
 ![Tablet wireframes](./images/wireframes/tabl_2.png)
 #### Authentication
 ![Tablet wireframes](./images/wireframes/tabl_3.png)
@@ -231,7 +241,7 @@ On completion of testing, wireframes were released to the client and feedback wa
 ### Mobile Diagrams
 #### Landing / Jobs / Gallery
 ![Mobile wireframes](./images/wireframes/mob_1.png)
-#### About / Contanct
+#### About / Contact
 ![Mobile wireframes](./images/wireframes/mob_2.png)
 #### Authentication
 ![Mobile wireframes](./images/wireframes/mob_3.png)
@@ -242,9 +252,14 @@ On completion of testing, wireframes were released to the client and feedback wa
 Trello Link: https://trello.com/b/ZmoHCKbb/inspo-homes
 
 **Project management** is the practice of organising teams to achieve goals and meet success criteria within a specified time. For this project the first thing we did was create a discord server and brainstorm ideas, collaboratively building up a scaffold for the app based on the classes it would need, and the pages we wanted.
+
 After obtaining approval to begin working on the app, we discussed how we were going to keep track of our progress and delegate tasks. We decided to use a number of different technologies to assist in collaboration, but primarily: Discord for ongoing communication and link sharing, Google Docs for shared documentation writing, Trello using Kanban Agile Methodology for setting up tasks to be done and to delegate to team members, and Github for distributed source control when we begin coding.
+
 Following this, the team worked on building out the user stories to cover all the features we brainstormed, adding these to Trello, working on wireframes, discussion and diagramming of the planned application architecture and data flow of the application, and testing to make sure our understanding of the Git Forking Workflow was adequate for completion of the project. Through a series of critical feedback sessions the data flow diagrams in particular went through a number of changes in the planning stage, resulting in a series of separate diagrams focusing on outlining particular processes in isolation.
-Once the project documentation is finalised, coding will begin. First we plan on building out the foundation: establishing the Database and its Models, creating the node/express server and some of the routes, and then getting a scaffold of the react frontend up and running and connected to the backend. After this we will then delegate the Trello tickets relating to each of the planned app features to each of the group members based on feature experience/knowledge/workload. During the course of the project we will monitor each other’s progress, ticking off features as we complete them, attaching the appropriate commits, and adjusting each team member’s workload where appropriate.
+
+Once the project documentation is finalised, coding will begin. First we plan on building out the foundation: establishing the Database and its Models, creating the node/express server and some of the routes, and then getting a scaffold of the react frontend up and running and connected to the backend. After this we will then delegate the Trello tickets relating to each of the planned app features to each of the group members based on feature experience/knowledge/workload. 
+
+During the course of the project we will monitor each other’s progress, ticking off features as we complete them, attaching the appropriate commits, and adjusting each team member’s workload where appropriate.
 
 ## Trello Screenshots
 
