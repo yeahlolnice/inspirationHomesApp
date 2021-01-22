@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Project Context
 
@@ -188,3 +189,9 @@ Screenshots of Trello over course of project,
 
 Planning Stage Screenshot (Saving local copies of each in case the links go down)
 https://i.imgur.com/U0HwNYB.jpg
+=======
+### Hell
+### Yeah
+### Brother
+### ASDF
+>>>>>>> f61ff960dcb9defbc6f7eae618ff280c6906d554
