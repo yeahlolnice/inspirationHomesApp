@@ -38,6 +38,8 @@
     + [Mid Planning Stage](#mid-planning-stage)
     + [Diagrams Completed](#diagrams-completed)
 
+---
+
 # Project Context
 
 As student full stack developers, it is necessary that we are able to demonstrate our developing tech skills to potential employers. This is achieved by constructing a complete application from planning through to deployment for a real world client using current technologies and planning tools.
