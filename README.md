@@ -1,5 +1,4 @@
 # Table of Contents
-
 - [Project Context](#project-context)
 - [Website description:](#website-description-)
     + [Purpose:](#purpose-)
@@ -54,12 +53,17 @@ The purpose of the website is to facilitate the tracking of a builder’s projec
 ### Functionality / feature components:
 
 The features of the website include:
-Landing page.
-Contact page for clients to reach the builder and commence a project with image upload capabilities.
-About page with builder information .
-Gallery page to showcase prior completed works.
-Jobs page to track projects that are currently underway. Builder is able to list build stages, with images, comments and the costs associated with each stage. The client is able to view the progress of the project, make comments, and enter amounts paid to track the total amount owing.
-Authorization, ability to create accounts for new clients.
+- Landing page.
+
+- Contact page for clients to reach the builder and commence a project with image upload capabilities.
+
+- About page with builder information.
+
+- Gallery page to showcase prior completed works.
+
+- Jobs page to track projects that are currently underway. Builder is able to list build stages, with images, comments and the costs associated with each stage. The client is able to view the progress of the project, make comments, and enter amounts paid to track the total amount owing.
+
+- Authorization, ability to create accounts for new clients.
 
 ### Target audience:
 
@@ -272,3 +276,5 @@ During the course of the project we will monitor each other’s progress, tickin
 ### Diagrams Completed
 ![trello board](./images/trello3.png)
 
+### Markdown Completed
+![trello board](./images/trello4.jpeg)
