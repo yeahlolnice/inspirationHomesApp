@@ -1,7 +1,7 @@
 # Table of Contents
 - [Project Context](#project-context)
 - [Website description:](#website-description)
-    + [Purpose:](#purpose-)
+    + [Purpose:](#purpose)
     + [Functionality / feature components:](#functionality---feature-components)
     + [Target audience:](#target-audience)
     + [Tech stack:](#tech-stack)
@@ -280,3 +280,132 @@ During the course of the project we will monitor each other’s progress, tickin
 
 ### Markdown Completed
 ![trello board](./images/trello4.jpeg)
+
+## Group Member User Stories
+
+- As part of the planning process we drafted user stories for ourselves to follow when building the application to outline why we are completing different parts of the planning documentation and understand what purpose they serve:
+
+- As a group member I want to complete the user stories so I can start outlining features of the app
+
+- As a group member I want to add the stories to trello to track what has and hasn’t been done
+
+- As a group member I want to outline the data flow model to understand how the app will function, how servers and databases will be accessed, and better understand the control flow of the application
+
+- As a group member I want to outline the application architecture, so that I know what the most important parts of the app are, and what platforms will be used
+
+- As a group member I want to complete the wireframes, so that I know how the app is supposed to look and determine how the features planned will be interacted with by the user
+
+- As a group member I want to outline how the project will be managed, to ensure that everyone knows what they’re doing, when they need to complete it by, and that the project gets completed on time.
+
+## Database Models Planning
+
+As part of the planning process we outlined the database model structure and the data types used within it:
+
+### User will have
+
+- Primary key id
+- Name = String
+
+- Email = String
+
+- Password = String
+
+- Role [SuperAdmin/Admin/ Client] = String
+
+- Jobs Array of Job Class Obj = Array of foreign_keys
+
+
+### Job will have a:
+
+- Primary key id
+- JobComplete? = Boolean
+
+- Client = Class Obj required for_key
+
+- Job Title = String required
+
+- Build Address = String required
+
+- Build Design Documents = PDF/Img array
+
+- Stages = Obj array generated from seed
+
+  Each Obj contains:
+
+  - StageIndex =  Number (To keep track of the order they get presented in the app, can reorder them though and if builder needs to create new stage can customise where in the build order it should be by editing this number)
+
+  - StageStatus = String (Hidden/InProgress/PaymentPending/Complete)
+
+  - StageName = String // Stage Placeholder Names: Pending, Ground Works, Base, Frame, Lock Up/Enclosed, Fixing/Fit Off, PCI, Handover
+
+  - Amount Owed = Number
+
+  - Amount Paid = Number
+
+  - Pics =  Image/Link
+
+  - Comments = [{ User Obj, Comment}, { User Obj, Comment}, { User Obj, Comment}]
+
+
+## Pages and Component planning
+
+
+**As part of the planning process we outlined the pages that are required for the application and the components and features of each page:**
+
+
+
+Nav component:
+
+Links to login/logout
+Links to Home/ Jobs/Gallery/About/Contact
+
+Home:
+
+- Nav Component
+- Landing page
+
+Jobs:
+
+- Nav Component
+- See all users jobs (Clients jobs for client, all jobs for builder)
+- For client add ability to create new job
+- For client after read only except has option to commit money to the job and add comments at each stage
+- For builder stages can be edited/added
+- Buttons to make payments and forms to change stage states
+- Email Confirmation after payment with receipt
+- Button to mark Job as Complete and add to Archived Jobs
+- Send Email when status of Job changes (New Stage, New Payment Due, etc)
+
+Gallery:
+
+- Nav Component
+- Pictures of Builds and testimonials from the clients, can be hardcoded, stretch goal to make more dynamic/editable
+
+About:
+
+- Nav Component
+- Bio of Builder, bit of history etc (Get some deets from old mate)
+
+Contact:
+
+- Nav Component
+- Create Job form that requires:
+    - Client Account for Authentication
+        - Build details - PDF/Image
+        - Build Address
+- Create Job Form:
+    - Creates Pending Job Add to Client
+    - Sets Job Stage to Pending
+    - Send email about new Job to Builder
+
+Sign Up:
+
+- Nav Component
+- Client Registration
+    - Name
+    - Email
+    - Password
+- Create Client Form
+    - Create Client User Obj in Database
+    - Sends email about new Client to Builder
+    - Sends email confirming registration to Client
