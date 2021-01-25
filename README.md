@@ -1,16 +1,15 @@
 # Table of Contents
-
 - [Project Context](#project-context)
-- [Website description:](#website-description-)
-    + [Purpose:](#purpose-)
-    + [Functionality / feature components:](#functionality---feature-components-)
-    + [Target audience:](#target-audience-)
-    + [Tech stack:](#tech-stack-)
+- [Website description:](#website-description)
+    + [Purpose:](#purpose)
+    + [Functionality / feature components:](#functionality---feature-components)
+    + [Target audience:](#target-audience)
+    + [Tech stack:](#tech-stack)
   * [Additional tech used](#additional-tech-used)
 - [User Stories](#user-stories)
     + [Client](#client)
     + [Builder](#builder)
-- [Data Flow Diagram:](#data-flow-diagram-)
+- [Data Flow Diagram:](#data-flow-diagram)
     + [Full Diagram](#full-diagram)
     + [Login and Client Creation Process](#login-and-client-creation-process)
     + [Create Job Process](#create-job-process)
@@ -18,7 +17,7 @@
     + [Client Job Payment Process](#client-job-payment-process)
     + [Client Update Job Process](#client-update-job-process)
     + [Builder Update Job Process](#builder-update-job-process)
-- [Application Architecture Diagram:](#application-architecture-diagram-)
+- [Application Architecture Diagram:](#application-architecture-diagram)
 - [Wireframes](#wireframes)
     + [Desktop Diagrams](#desktop-diagrams)
       - [Landing Page](#landing-page)
@@ -39,6 +38,8 @@
     + [Mid Planning Stage](#mid-planning-stage)
     + [Diagrams Completed](#diagrams-completed)
 
+---
+
 # Project Context
 
 As student full stack developers, it is necessary that we are able to demonstrate our developing tech skills to potential employers. This is achieved by constructing a complete application from planning through to deployment for a real world client using current technologies and planning tools.
@@ -54,12 +55,17 @@ The purpose of the website is to facilitate the tracking of a builder’s projec
 ### Functionality / feature components:
 
 The features of the website include:
-Landing page.
-Contact page for clients to reach the builder and commence a project with image upload capabilities.
-About page with builder information .
-Gallery page to showcase prior completed works.
-Jobs page to track projects that are currently underway. Builder is able to list build stages, with images, comments and the costs associated with each stage. The client is able to view the progress of the project, make comments, and enter amounts paid to track the total amount owing.
-Authorization, ability to create accounts for new clients.
+- Landing page.
+
+- Contact page for clients to reach the builder and commence a project with image upload capabilities.
+
+- About page with builder information.
+
+- Gallery page to showcase prior completed works.
+
+- Jobs page to track projects that are currently underway. Builder is able to list build stages, with images, comments and the costs associated with each stage. The client is able to view the progress of the project, make comments, and enter amounts paid to track the total amount owing.
+
+- Authorization, ability to create accounts for new clients.
 
 ### Target audience:
 
@@ -160,40 +166,40 @@ This was initially not on the page and a requirement for the client to make an a
 For the app the major processes that require data sharing between the client, server and database are the Login and Client Creation process, the Client Payment Process, and the Creating, Viewing and Updating Jobs processes.
 
 ### Full Diagram
-![Data Flow diagram](./images/diagrams/full-data-flow.png)
+![Data Flow diagram](./docs/diagrams/full-data-flow.png)
 
 ### Login and Client Creation Process
-![login Flow diagram](./images/diagrams/login-data-flow.png)
+![login Flow diagram](./docs/diagrams/login-data-flow.png)
 
 In the Login process Clients and the Builder send account details to the server, which checks them against those same details in the database, and returns a confirmation allowing login or a rejection and prevention of login. 
 
 In the Client Creation process a prospective client will provide new account details to the server, which creates a new instance of User on the database as long as the name and email address are not already in the database.
 
 ### Create Job Process
-![create job Flow diagram](./images/diagrams/client-create-job.png)
+![create job Flow diagram](./docs/diagrams/client-create-job.png)
 
 For the Job Crud processes, creating jobs requires the client to send through job information such as design documents and the prospective build address, which the server uses along with the clients User instance to create a new Job instance on the database, then adding the Job’s id as a foreign key in the User instances Job’s array. 
 
 When Images are included in the Job details these images are sent to the AWS Bucket for cloud hosting, which supplies back a link that can be stored in the Job documents array in the database by the server.
 
 ### View Jobs Process
-![view job Flow diagram](./images/diagrams/client-view-job.png)
+![view job Flow diagram](./docs/diagrams/client-view-job.png)
 
 Viewing jobs requires the server requesting all the relevant jobs for that user from the database (all jobs for builder, only client’s jobs for client) and supplying them to the front end.
 
 
 ### Client Job Payment Process
-![payment Flow diagram](./images/diagrams/payment-data-flow.png)
+![payment Flow diagram](./docs/diagrams/payment-data-flow.png)
 
 Updating jobs can be done by either the client or the builder. When clients make a payment on the job, payment information is sent from the client to the server and onto Stripe for confirmation. If Stripe returns an OK, then the server updates the amount owed on the Job to an amount less that which was just paid by the client. 
 
 ### Client Update Job Process
-![client Flow diagram](./images/diagrams/client-data-flow.png)
+![client Flow diagram](./docs/diagrams/client-data-flow.png)
 
 When the client makes a comment on the Job stage this comment is sent to the server which appends it to the Job stage’s comments array in the database. When uploading additional documents the image is sent to the AWS Bucket as in Job creation, a link to the image is returned to the server and uploaded to the database.
 
 ### Builder Update Job Process
-![builder Flow diagram](./images/diagrams/builder-data-flow.png)
+![builder Flow diagram](./docs/diagrams/builder-data-flow.png)
 
 When the builder updates the Job or the Job Stages the data is sent to the server from the client, the server then updates the correct job with the new Stage Amount/Stage Status or Stage Comment. When uploaded images to Job stages, in a similar fashion to when clients upload design documents, the front-end sends the image to the AWS bucket and the returned link is sent to the server to be added to the corresponding stage in the Job instance on the database.
 
@@ -203,7 +209,7 @@ When the builder updates the Job or the Job Stages the data is sent to the serve
 
 Clarification and explanation of diagram
 
-![Application Architecture](./images/diagrams/application_diagram.png)
+![Application Architecture](./docs/diagrams/application_diagram.png)
 
 As can be seen from the diagram above, the application is separated into four different layers, consisting of the client layer, the server layer, the database layer and the external platform layer. On the client layer the user makes changes to the application state, which communicates with the server layer through HTTP requests. 
 
@@ -221,30 +227,30 @@ On completion of testing, wireframes were released to the client and feedback wa
 
 ### Desktop Diagrams
 #### Landing Page
-![Desktop wireframes](./images/wireframes/landing_desk.png)
+![Desktop wireframes](./docs/wireframes/landing_desk.png)
 #### Jobs Page
-![Desktop wireframes](./images/wireframes/jobs_desk.png)
+![Desktop wireframes](./docs/wireframes/jobs_desk.png)
 #### About / Gallery / Contact Pages
-![Desktop wireframes](./images/wireframes/assort_desk.png)
+![Desktop wireframes](./docs/wireframes/assort_desk.png)
 #### Authentication Pages
-![Desktop wireframes](./images/wireframes/auth_desk.png)
+![Desktop wireframes](./docs/wireframes/auth_desk.png)
 
 ### Tablet Diagrams
 #### Landing / Jobs / Gallery
-![Tablet wireframes](./images/wireframes/tabl_1.png)
+![Tablet wireframes](./docs/wireframes/tabl_1.png)
 #### About / Contact
-![Tablet wireframes](./images/wireframes/tabl_2.png)
+![Tablet wireframes](./docs/wireframes/tabl_2.png)
 #### Authentication
-![Tablet wireframes](./images/wireframes/tabl_3.png)
+![Tablet wireframes](./docs/wireframes/tabl_3.png)
 
 
 ### Mobile Diagrams
 #### Landing / Jobs / Gallery
-![Mobile wireframes](./images/wireframes/mob_1.png)
+![Mobile wireframes](./docs/wireframes/mob_1.png)
 #### About / Contact
-![Mobile wireframes](./images/wireframes/mob_2.png)
+![Mobile wireframes](./docs/wireframes/mob_2.png)
 #### Authentication
-![Mobile wireframes](./images/wireframes/mob_3.png)
+![Mobile wireframes](./docs/wireframes/mob_3.png)
 
 
 ---
@@ -264,10 +270,146 @@ During the course of the project we will monitor each other’s progress, tickin
 ## Trello Screenshots
 
 ### Early Planning Stage
-![trello board](./images/trello1.png)
+![trello board](./docs/trello1.png)
 
 ### Mid Planning Stage
-![trello board](./images/trello2.png)
+![trello board](./docs/trello2.png)
 
 ### Diagrams Completed
+<<<<<<< HEAD
 ![trello board](./images/trello3.png)
+=======
+![trello board](./docs/trello3.png)
+
+### Markdown Completed
+![trello board](./docs/trello4.jpeg)
+
+## Group Member User Stories
+
+- As part of the planning process we drafted user stories for ourselves to follow when building the application to outline why we are completing different parts of the planning documentation and understand what purpose they serve:
+
+- As a group member I want to complete the user stories so I can start outlining features of the app
+
+- As a group member I want to add the stories to trello to track what has and hasn’t been done
+
+- As a group member I want to outline the data flow model to understand how the app will function, how servers and databases will be accessed, and better understand the control flow of the application
+
+- As a group member I want to outline the application architecture, so that I know what the most important parts of the app are, and what platforms will be used
+
+- As a group member I want to complete the wireframes, so that I know how the app is supposed to look and determine how the features planned will be interacted with by the user
+
+- As a group member I want to outline how the project will be managed, to ensure that everyone knows what they’re doing, when they need to complete it by, and that the project gets completed on time.
+
+## Database Models Planning
+
+As part of the planning process we outlined the database model structure and the data types used within it:
+
+### User will have
+
+- Primary key id
+- Name = String
+
+- Email = String
+
+- Password = String
+
+- Role [SuperAdmin/Admin/ Client] = String
+
+- Jobs Array of Job Class Obj = Array of foreign_keys
+
+
+### Job will have a:
+
+- Primary key id
+- JobComplete? = Boolean
+
+- Client = Class Obj required for_key
+
+- Job Title = String required
+
+- Build Address = String required
+
+- Build Design Documents = PDF/Img array
+
+- Stages = Obj array generated from seed
+
+  Each Obj contains:
+
+  - StageIndex =  Number (To keep track of the order they get presented in the app, can reorder them though and if builder needs to create new stage can customise where in the build order it should be by editing this number)
+
+  - StageStatus = String (Hidden/InProgress/PaymentPending/Complete)
+
+  - StageName = String // Stage Placeholder Names: Pending, Ground Works, Base, Frame, Lock Up/Enclosed, Fixing/Fit Off, PCI, Handover
+
+  - Amount Owed = Number
+
+  - Amount Paid = Number
+
+  - Pics =  Image/Link
+
+  - Comments = [{ User Obj, Comment}, { User Obj, Comment}, { User Obj, Comment}]
+
+
+## Pages and Component planning
+
+
+**As part of the planning process we outlined the pages that are required for the application and the components and features of each page:**
+
+
+
+Nav component:
+
+Links to login/logout
+Links to Home/ Jobs/Gallery/About/Contact
+
+Home:
+
+- Nav Component
+- Landing page
+
+Jobs:
+
+- Nav Component
+- See all users jobs (Clients jobs for client, all jobs for builder)
+- For client add ability to create new job
+- For client after read only except has option to commit money to the job and add comments at each stage
+- For builder stages can be edited/added
+- Buttons to make payments and forms to change stage states
+- Email Confirmation after payment with receipt
+- Button to mark Job as Complete and add to Archived Jobs
+- Send Email when status of Job changes (New Stage, New Payment Due, etc)
+
+Gallery:
+
+- Nav Component
+- Pictures of Builds and testimonials from the clients, can be hardcoded, stretch goal to make more dynamic/editable
+
+About:
+
+- Nav Component
+- Bio of Builder, bit of history etc (Get some deets from old mate)
+
+Contact:
+
+- Nav Component
+- Create Job form that requires:
+    - Client Account for Authentication
+        - Build details - PDF/Image
+        - Build Address
+- Create Job Form:
+    - Creates Pending Job Add to Client
+    - Sets Job Stage to Pending
+    - Send email about new Job to Builder
+
+Sign Up:
+
+- Nav Component
+- Client Registration
+    - Name
+    - Email
+    - Password
+- Create Client Form
+    - Create Client User Obj in Database
+    - Sends email about new Client to Builder
+    - Sends email confirming registration to Client
+>>>>>>> 8f74fd7dbcf151ece47d1426a12167939ba707f8
