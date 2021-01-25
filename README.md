@@ -271,4 +271,3 @@ During the course of the project we will monitor each other’s progress, tickin
 
 ### Diagrams Completed
 ![trello board](./images/trello3.png)
-
